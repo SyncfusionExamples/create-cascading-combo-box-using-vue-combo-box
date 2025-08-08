@@ -17,13 +17,15 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { ComboBoxPlugin} from '@syncfusion/ej2-vue-dropdowns';
+import { ComboBoxComponent} from '@syncfusion/ej2-vue-dropdowns';
 import { Query } from "@syncfusion/ej2-data";
-Vue.use(ComboBoxPlugin);
 
-export default Vue.extend({
-  data: function() {
+export default {
+  name: 'App',
+  components: {
+    'ejs-combobox': ComboBoxComponent
+  },
+  data() {
     return {
       enableCombobox: false,
       childDataQuery: null,
@@ -41,12 +43,12 @@ export default Vue.extend({
     };
   },
   methods: {
-    onCountryChange: function(args) {
+    onCountryChange(args) {
       this.enableCombobox = true;
       this.childDataQuery = new Query().where('CountryId', 'equal', args.value);
     }
   }
-});
+};
 </script>
 
 
